@@ -1,0 +1,528 @@
+// Base Styles
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;900&display=swap');
+
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/grid/columns.sass";
+
+
+// Media Queries Manager
+// 1em = 16px
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media (max-width: 37.5em) {
+      @content
+    }
+
+    ; // 600px
+  }
+
+  @if $breakpoint==tab-port {
+    @media (max-width: 56.25em) {
+      @content
+    }
+
+    ; // 900px
+  }
+
+  @if $breakpoint==tab-land {
+    @media (max-width: 75em) {
+      @content
+    }
+
+    ; // 1200px
+  }
+
+  @if $breakpoint==big-desktop {
+    @media (min-width: 112.5em) {
+      @content
+    }
+
+    ; // 1800px
+  }
+}
+
+
+$dark-color: #191414;
+$dark-color-bg: #191414cc;
+$primary-color: #1DB954;
+$primary-color-dk: #1baa4d;
+
+$gradient-green: linear-gradient(to right, $primary-color, $primary-color-dk);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito Sans',
+    sans-serif;
+  line-height: 1.7;
+  color: #fff;
+  background-color: $dark-color;
+}
+
+html {
+  font-size: 62.5%;
+
+  @include respond(tab-port) {
+    font-size: 56.25%;
+  }
+
+  @include respond(phone) {
+    font-size: 50%;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-size: 2rem;
+  display: inline-block;
+  color: $dark-color;
+}
+
+section {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 18px 72px;
+  border-radius: 250px;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Source Sans Pro',
+    sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 6.1rem;
+  letter-spacing: 1px;
+
+  @include respond(phone) {
+    font-size: 4.8rem;
+  }
+}
+
+h2 {
+  font-size: 4.8rem;
+
+  @include respond(phone) {
+    font-size: 3.13rem;
+  }
+}
+
+h3 {
+  font-size: 3.13rem;
+
+  @include respond(phone) {
+    font-size: 2.8rem;
+  }
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+
+p {
+  font-size: 2rem;
+}
+
+img {
+  width: 100%;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.column {
+  padding: 0 25px;
+
+  & img {
+
+    @include respond(tab-land) {
+      margin-top: 5rem;
+    }
+
+    @include respond (tab-port) {
+      width: 66.66%;
+      margin-top: 0rem;
+    }
+  }
+}
+
+.column-main {
+  
+  @include respond (tab-land) {
+    width: 60%;
+    flex: none;
+  }
+
+  @include respond (tab-port) {
+    width: 100%;
+  }
+}
+
+.columns {
+
+  @include respond (tab-port) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Utility Classes
+.p-section-s {
+  padding: 50px 15px;
+}
+
+.p-section-m {
+  padding: 75px 15px;
+}
+
+.p-section-l {
+  padding: 100px 15px;
+}
+
+.shadow-s {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.shadow-m {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+
+// Heading, Nav & Hero
+
+.section-one {
+  padding: 170px 15px;
+  background: linear-gradient(to bottom, #1914141a, #191414),
+    url('../img/samuel-scalzo-xyuYk9oLA8I-unsplash.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+
+  @include respond(tab-port) {
+    padding: 150px 15px;
+  }
+
+  @include respond(phone) {
+    padding: 190px 15px;
+  }
+
+  .navbar {
+    background: transparent;
+    padding: 2rem 1.5rem 2rem 2.4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all .3s;
+    z-index: 999;
+
+    &__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include respond(tab-port) {
+        flex-direction: column;
+      }
+    }
+
+    .logo {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: 'Source Sans Pro',
+        sans-serif;
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      font-size: 2.5rem;
+      color: #fff;
+
+      @include respond(tab-port) {
+        margin-bottom: 1rem;
+      }
+
+      & i {
+        margin-right: 10px;
+        font-size: 3.6rem;
+        display: inline-block;
+      }
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include respond(phone) {
+        flex-direction: column;
+      }
+
+      &-item {
+
+        &:not(:last-child) a {
+          margin-right: 20px;
+
+          @include respond(tab-port) {
+            margin-right: 7px;
+          }
+        }
+
+        & a {
+          padding: 7px 14px;
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 1.6rem;
+          letter-spacing: 1px;
+          color: #fff;
+
+          @include respond(phone) {
+            padding: 5px 0;
+          }
+        }
+
+        & .active {
+          color: $primary-color;
+        }
+      }
+
+    }
+
+
+    &--active {
+      background: #fff;
+      box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);
+      padding: 1rem 1.5rem 1rem 2.4rem;
+      position: fixed;
+      transition: all .5s;
+
+      .logo {
+        color: $dark-color;
+      }
+
+      &__list {
+
+        &-item {
+
+          & a {}
+
+        }
+      }
+
+      & a {
+        color: $dark-color;
+      }
+
+      & .active {
+        color: $primary-color;
+      }
+
+    }
+  }
+
+  .hero-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 850px;
+    text-align: center;
+
+    @include respond(tab-port) {
+      max-width: 100%;
+    }
+
+    &__heading {}
+
+    &__subheading {
+      text-transform: none;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    &__btn {
+      background: $gradient-green;
+    }
+  }
+}
+
+// Common Section Styles
+
+main {
+  position: relative;
+}
+
+section {
+  padding: 150px 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include respond(tab-port) {
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  @include respond(phone) {
+    padding: 70px 0;
+  }
+}
+
+.section-one {
+  background-color: #66CC99;
+}
+
+.section-two {
+  background-color: #E95171;
+}
+
+.section-three {
+  background-color: #4C87B3;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.section-p {
+  opacity: .8;
+  margin-bottom: 2rem;
+}
+
+.btn-secondary {
+  padding: 1.2rem 3.6rem;
+  border: solid 1px white;
+  border-radius: 250px;
+  background-color: white;
+  color: $dark-color;
+
+  @include respond(tab-port) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.reverse-columns {
+  @include respond(tab-port) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+// Section One
+
+.section-one {
+
+  &__img {
+    border-radius: 3px;
+  }
+}
+
+// Section Two
+
+.section-two {
+
+  &__img {
+    border-radius: 3px;
+  }
+}
+
+// Section Three
+
+.section-three {
+
+  &__img {
+    border-radius: 3px;
+  }
+}
+
+// Floating popup
+.floating-popup {
+  position: fixed;
+  bottom: 32px;
+  left: -500px;
+  background-color: #fff;
+  color: #191414;
+  padding: 15px 30px;
+  border-radius: 5px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__img {
+    width: 75px;
+    border-radius: 50%;
+    border: solid 4px $primary-color;
+    margin-right: 25px;
+  }
+}
+
+// Floating Btn
+
+.floating {
+  position: fixed;
+  bottom: 32px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  &__btn {
+    background-color: $primary-color;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1),
+      0 2px 4px -1px rgba(0, 0, 0, .06);
+
+    &-icon {
+      text-align: center;
+      display: inline-block;
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+}

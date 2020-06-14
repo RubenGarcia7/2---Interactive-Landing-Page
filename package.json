@@ -1,0 +1,14 @@
+{
+  "name": "landingpage-nanodegree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ruben Garcia",
+  "license": "ISC",
+  "dependencies": {
+    "bulma": "^0.8.2"
+  }
+}
